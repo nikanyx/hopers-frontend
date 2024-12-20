@@ -1,4 +1,4 @@
-const ENDPOINT = "http://localhost:8080/orange/api/";
+const ENDPOINT = "http://192.168.11.98:8080/orange/api/";
 
 async function getUserById(id) {
     const response = await fetch(ENDPOINT + "user/" + id, {
@@ -24,13 +24,14 @@ async function listGifteesByUserId(id) {
 async function populateGiftees(id) {
     const gifteesData = await listGifteesByUserId(id);
     let elementStr;
-    let table = document.getElementById("dataTable");
+    let table = document.getElementsByClassName("dataTable")[0];
     table.innerHTML = "";
     gifteesData.forEach(function (element) {
         elementStr = 
-        `<tr><td>${gifteesData.name}</td>
-        <td>${gifteesData.age}</td>
-        <td>${gifteesData.description}</td></tr>`;
+        `<tr><td>${element.name}</td>
+        <td>${element.age}</td>
+        <td>${element.description}</td></tr>`;
+        console.log(elementStr);
         table.innerHTML += elementStr;
     });
 }
@@ -38,11 +39,11 @@ async function populateGiftees(id) {
 async function populateProfileData() {
     const urlParams = new URLSearchParams(window.location.search);
     const userData = await getUserById(urlParams.get('id'));
+    //const gifteesData = await listGifteesByUserId(urlParams.get('id'));
 
     document.getElementById("name").textContent = userData.name;
     document.getElementById("phone").textContent = userData.phone;
     document.getElementById("mail").textContent = userData.mail;
-    document.getElementById("needsDescr").textContent = userData.description;
 
     populateGiftees(userData.id);
 }

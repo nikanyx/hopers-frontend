@@ -1,4 +1,4 @@
-const ENDPOINT = "http://localhost:8080/orange/api/";
+const ENDPOINT = "http://192.168.11.98:8080/orange/api/";
 const LOGGEDINUSER = 3;
 
 async function listAvailableGiftees(path) {

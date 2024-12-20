@@ -1,4 +1,4 @@
-const ENDPOINT = "http://localhost:8080/orange/api/";
+const ENDPOINT = "http://192.168.11.98:8080/orange/api/";
 
 async function getInstitution(id) {
     const response = await fetch(ENDPOINT + "institution/" + id, {

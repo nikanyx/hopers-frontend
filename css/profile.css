@@ -86,6 +86,10 @@ img {
   display: flex;
 }
 
+table.dataTable {
+  width: 400px;
+}
+
 .logo img {
   max-width: 150px;
 }
